@@ -7,29 +7,7 @@ const inquirer = require('inquirer');
 const {Circle, Square, Triangle} = require('./lib/shapes');
   // bringing in the shapes js file from the lib
 
-
-// makes the questions that allow a user to select the characters inside the shape as well as its  color and type.
-inquirer
-.prompt(questions)
-
-.then((answers) => {
-    let shape;
-
-    if(answers.shape === 'circle') {
-        shape = new Circle();
-    }
-
-    if(answers.shape === 'square') {
-        shape = new Square();
-    }
-
-    if(answers.shape === 'triangle') {
-        shape = new Triangle();
-    }
-    shape.setColor(answers.shapeColor);
-
-
-const questions = [
+  const questions = [
     {
         type: 'input',
         name: 'text',
@@ -62,6 +40,26 @@ const questions = [
         name: 'shapeColor',
         message: 'Enter a shape color'},
 ];
+
+// makes the questions that allow a user to select the characters inside the shape as well as its  color and type.
+inquirer
+.prompt(questions)
+
+.then((answers) => {
+    let shape;
+
+    if(answers.shape === 'circle') {
+        shape = new Circle();
+    }
+
+    if(answers.shape === 'square') {
+        shape = new Square();
+    }
+
+    if(answers.shape === 'triangle') {
+        shape = new Triangle();
+    }
+    shape.setColor(answers.shapeColor);
 
 const svgFile = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
 ${shape.render()}
